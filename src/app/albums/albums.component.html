@@ -1,56 +1,155 @@
-<div class="row ">
+<div class="row text-white p-4 shadow-sm">
     <div class="col-sm-4 video">
-            <app-albums-details [album]="selectedAlbum"></app-albums-details>
+        <app-albums-details [album]="selectedAlbum" (onPlay)="playParent($event)" class="parent"></app-albums-details>
     </div>
     <!-- </div>.video -->
     <div class="col-sm-8 music">
-        <h1>Page principale Albums Musics</h1>
+        <h1 class="text-center">Page principale Album Musics</h1>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    <a class="page-link text-danger" href="#" tabindex="-1">Previous</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="#">1</a>
+                    <a class="page-link text-danger" href="#">1</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="#">2</a>
+                    <a class="page-link text-danger" href="#">2</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="#">3</a>
+                    <a class="page-link text-danger" href="#">3</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link text-danger" href="#">Next</a>
                 </li>
             </ul>
         </nav><!-- .pagination -->
 
-        <div class="card" *ngIf="albums">
+        <div *ngIf="albums">
             <div class="card-header">
-                Punk electro
+                <!-- Punk electro -->
             </div>
-            <div class="card-body" *ngFor="let album of albums">
+            <div class="card-body shadow rounded my-4 pb-4 px-4 border border-secondary"  *ngFor="let album of albums">
+            <div class="card-body  rounded pb-4 px-4 border-dark">
+                <div>{{album.ref}}</div>
+            </div>
+               
+                    <!-- <div class="w-100 bg-dark">{{album.ref}}</div> -->
+                
                 <h5 class="card-title">{{ album.title }}</h5>
                 <p class="card-text"> {{ album.description }}</p>
-                <a class="btn btn-outline-primary" href="#" role="button" *ngFor="let tag of album.tags"
-                    style="background-color: rgb(1, 106, 176); color: white;">{{ tag }}</a>
+                <a class="btn btn-outline-secondary my-2" href="#" role="button" *ngFor="let tag of album.tags">{{ tag
+                    }}</a>
 
 
                 <div style="margin-top: 1rem;">
-                    <a class="btn btn-outline-primary lang" href="#" role="button"
-                        style="color: rgb(0, 0, 0); border: #00000089 solid 1px;">fr</a>
+                    <a class="btn btn-danger lang rounded" href="#" role="button">fr</a>
                     <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
                     <small>{{ album.like }}</small>
                     <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
                     <small>{{ album.duration }} min</small>
                 </div>
-                <button style="
-                margin-top:1rem;
-                border: solid 1px #02ab7e;
-                background-color: #02ab7e;
-                color: white;" (click)="onSelect(album)">Afficher</button>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a (click)="onSelect(album)" href="#" class="btn btn-outline-danger my-3">Voir l'album</a>
+
+                    <!-- <p *ngIf="status === album.id" class="fas fa-pause statusOn bg-danger"></p> -->
+                    <div class="child" *ngIf="status === album.id">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
 
             </div>
         </div><!-- .card -->
 
     </div><!-- .music -->
+
+    <style>
+        .statusOn {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50%;
+            display: inline;
+            width: fit-content;
+            padding: 1rem;
+            transition: all 0.8s;
+            animation-name: scaleBtn;
+            animation-duration: 2.1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes scaleBtn {
+            0% {
+                transform: scale(1.6);
+            }
+
+            20% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.6);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+
+            80% {
+                transform: scale(1.6);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+
+
+        }
+
+        .child {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            /* background-color: red; */
+            width: 40px;
+            aspect-ratio: 16 / 9;
+            /* margin: 2rem auto; */
+            /* padding: 2rem; */
+
+        }
+
+        .child div {
+            width: 1.5rem;
+            height: 95%;
+            background-color: #ff9632;
+            animation: loader-animation 0.5s infinite;
+
+        }
+
+        .child div:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .child div:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .child div:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes loader-animation {
+            from {
+                transform: scaleY(1.5);
+            }
+
+            to {
+                transform: scaleY(1);
+            }
+        }
+    </style>

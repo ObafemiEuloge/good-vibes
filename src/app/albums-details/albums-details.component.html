@@ -1,11 +1,45 @@
-<div class="card">
-    <img class="card-img-top" src="./assets/images/default_image.png" alt="Group Music">
-    <div class="card-body">
-        <h5 class="card-title">Dark</h5>
-        <p class="card-text">Punk electro</p>
-        <a href="#" class="btn btn-primary">Play >> </a>
+<div class="card shadow parent" *ngIf="album">
+    <img class="card-img-top" src="{{imgAlbum}}" alt="Group Music">
+    <div class="card-body bg-dark text-light" *ngIf="album">
+        <h5 class="card-title text-capitalize">{{album.title}}</h5>
+        <p class="card-text text-capitalize bg-dark text-light">{{album.name}}</p>
+        <a href="#" class="btn btn-danger text-bold shadow" (click)="play(album)">Play <span
+                class="fas fa-play-circle"></span></a>
     </div>
-    <ul class="list-group" *ngFor="let list of albumList">
-        <li class="list-group-item active">{{list}}</li>
-    </ul>
+
+    <div *ngIf="albumList; then ifBlock; else elseBlock "></div>
+    <ng-template #ifBlock>
+        <ul class="list-group bg-dark text-light">
+            <li class="list-group-item bg-dark text-light border-none" *ngFor="let list of albumList">{{list}}</li>
+        </ul>
+    </ng-template>
+
+    <ng-template #elseBlock>
+        <ul class="list-group">
+            <li class="list-group-item">Pas de son pour cet album.</li>
+        </ul>
+    </ng-template>
 </div>
+
+<style>
+    .parent {
+        transition: all 0.6s;
+    }
+
+    .parent {
+        /* transform: rotate(50px, 100px); */
+        animation-name: example;
+        animation-duration: 4s;
+        animation-fill-mode: none;
+    }
+
+    @keyframes example {
+        0% {
+            transform: translateX(-250px);
+        }
+
+        100% {
+            transform: translateX(0px);
+        }
+    }
+</style>

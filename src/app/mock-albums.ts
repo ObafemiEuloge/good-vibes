@@ -1,4 +1,4 @@
-import { Album, List } from './album';
+import { Album, List, Img } from './album';
 
 export const ALBUMS: Album[] = [
     {
@@ -280,3 +280,52 @@ export const ALBUM_LISTS : List[]  = [
       id !: string;
       visibility !: boolean;
   }
+
+export const CoverAlbumList : Img[] = [
+  {
+    "id": "1",
+    "src": "../../assets/AnimeBoy/img1.jpg", 
+  },
+  {
+    "id": "2",
+    "src": "../../assets/AnimeBoy/img2.jpg", 
+  },
+  {
+    "id": "3",
+    "src": "../../assets/AnimeBoy/img3.png", 
+  },
+  {
+    "id": "4",
+    "src": "../../assets/AnimeBoy/img4.jpg", 
+  },
+  {
+    "id": "5",
+    "src": "../../assets/AnimeBoy/img5.jpg", 
+  },
+  {
+    "id": "6",
+    "src": "../../assets/AnimeBoy/img6.jpg", 
+  },
+  {
+    "id": "7",
+    "src": "../../assets/AnimeBoy/img7.jpg", 
+  },
+  {
+    "id": "8",
+    "src": "../../assets/AnimeBoy/img8.jpg", 
+  },
+
+  {
+    "id": "8",
+    "src": "../../assets/AnimeBoy/img8.jpg", 
+  },
+  {
+    "id": "9",
+    "src": "../../assets/AnimeBoy/img9.jpg", 
+  },
+  {
+    "id": "10",
+    "src": "../../assets/AnimeBoy/img10.jpg", 
+  },
+
+]

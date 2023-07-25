@@ -1,6 +1,6 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Album } from "../album";
-import { ALBUM_LISTS } from '../mock-albums';
+import { AlbumService } from '../album.service';
 
 @Component({
   selector: 'app-albums-details',
@@ -9,23 +9,37 @@ import { ALBUM_LISTS } from '../mock-albums';
 })
 export class AlbumsDetailsComponent implements OnInit{
   @Input() album !: Album;
+  @Output() onPlay: EventEmitter<Album> = new EventEmitter();
+
   albumList !: string[] | undefined ;
+  imgAlbum !: string | undefined;
+
   
-  constructor() {}
+  constructor(
+    private albumService : AlbumService
+  ) {}
   ngOnInit(): void {
       console.log(this.album);
   }
 
-  ngOnChanges(){
-    if (this.album !== undefined) {
-      ALBUM_LISTS.forEach((songList)=>{
-          if (this.album.id === songList.id) {
-            this.albumList = songList.list ;
-          }
-      })
+  ngOnChanges() : void{
+    if (this.album) {
+     this.albumList = this.albumService.getAlbumList(this.album.id)?.list
     }
-    console.log(this.albumList);
-    
+    this.ngChangesCover();
   }
 
+  ngChangesCover() : void {
+    if (this.album) {
+      this.imgAlbum =this.albumService.getAlbumImage(this.album.id)?.src
+    }
+    // console.log(this.albumList);
+  }
+
+  play(album: Album){
+    this.onPlay.emit(album);
+  }
+
+
 }
+

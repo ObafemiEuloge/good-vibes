@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
+body{
+    height: 100vh;
+    background-color: #1a1a1a;
+}
 .principal{
     height: 8rem;
     margin: 0 4.5rem;
@@ -20,9 +23,4 @@
 .glyph-icon {
    height: .75rem;
    display: inline-block; margin:0.25rem;
-}
-
-.lang{
-    border-color: #b9021e;
-    color: #b9021e;
 }

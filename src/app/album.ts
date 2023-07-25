@@ -16,3 +16,10 @@ export class List {
        id !: string;
        list !: Array<string>;
 }
+
+export class Img {
+        id !: string;
+        src !: string;
+}
+
+
