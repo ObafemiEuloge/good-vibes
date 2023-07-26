@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Poppins;
+  src: url("../src/assets/poppins/Poppins-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: Poppins;
+  src: url("../src/assets/poppins/Poppins-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: Poppins;
+  src: url("../src/assets/poppins/Poppins-Bold.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
 body {
   height: 100vh;
   background-color: #1a1a1a;

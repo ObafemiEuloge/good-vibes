@@ -1,6 +1,6 @@
 import { Injectable, numberAttribute } from '@angular/core';
 import { ALBUMS, ALBUM_LISTS, CoverAlbumList } from './mock-albums';
-import { Album, Img, List } from "./album";
+import { Album, Img, List, SortAlbumCallback } from "./album";
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +18,13 @@ export class AlbumService {
    * @returns Retourne la liste de tous les albums
    */
   getAlbums() : Array<Album>{ 
-   
     return this._albums.sort((a: Album, b: Album)=>{return b.duration - a.duration});
   }
 
   /**
    * Fonction de recherche d'un album particulier
    * @param id identifiant de l'album à rechercher
-   * @returns Retourne l'album correspondant; undefinend si aucun identifiant ne correspondant
+   * @returns Retourne l'album correspondant; undefined si aucun identifiant ne correspondant
    */
   getAlbum(id: string) : Album | undefined { 
     return this._albums.find(album => album.id === id);
@@ -47,8 +46,14 @@ export class AlbumService {
     return this._albums.length;
   }
 
-  paginate(start: number, end: number): Album[] {
-    
+  order(callback: SortAlbumCallback) : AlbumService{
+    this._albums.sort(callback);
+    return this;
+  }
+
+  limit(start: number, end: number): AlbumService {
+    this._albums = this._albums.slice(start, end)
+    return  this;      
   }
 
 }

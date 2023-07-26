@@ -22,4 +22,7 @@ export class Img {
         src !: string;
 }
 
+export interface SortAlbumCallback {
+        (a: Album, b:Album) : number;
+}
 

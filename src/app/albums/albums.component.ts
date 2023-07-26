@@ -18,12 +18,14 @@ export class AlbumsComponent implements OnInit {
   constructor(
     private albumService : AlbumService
   ) {
-
+    console.log(`Le nombre d'albums disponible est ${this.albumService.count()}`)
   }
 
   ngOnInit() : void {
-      this.albums = this.albumService.getAlbums();
-      console.log(`Le nombre d'albums disponible est ${this.albumService.count()}`)
+      this.albums = this.albumService
+                        .order((a: Album, b: Album)=>{return a.duration - b.duration})
+                        .limit(0, 2)
+                        .getAlbums();
   }
 
   onSelect(generateAlbum: Album){

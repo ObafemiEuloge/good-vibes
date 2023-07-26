@@ -1,65 +1,66 @@
+<app-search></app-search>
 <div class="row text-white p-4 shadow-sm">
     <div class="col-sm-4 video">
         <app-albums-details [album]="selectedAlbum" (onPlay)="playParent($event)" class="parent"></app-albums-details>
     </div>
     <!-- </div>.video -->
     <div class="col-sm-8 music">
-        <h1 class="text-center">Page principale Album Musics</h1>
+        <h1 class="text-center" style="color: #e1e1e1;">Page principale Album Musics</h1>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
-                    <a class="page-link text-danger" href="#" tabindex="-1">Previous</a>
+                    <a class="page-link text-dark" href="#" tabindex="-1">Previous</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link text-danger" href="#">1</a>
+                    <a class="page-link text-dark" href="#" (click)="ngOnInit()">1</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link text-danger" href="#">2</a>
+                    <a class="page-link text-dark" href="#">2</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link text-danger" href="#">3</a>
+                    <a class="page-link text-dark" href="#">3</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link text-danger" href="#">Next</a>
+                    <a class="page-link text-dark" href="#">Next</a>
                 </li>
             </ul>
         </nav><!-- .pagination -->
 
         <div *ngIf="albums">
             <div class="card-header">
-                <!-- Punk electro -->
-            </div>
-            <div class="card-body shadow rounded my-4 pb-4 px-4 border border-secondary"  *ngFor="let album of albums">
-            <div class="card-body  rounded pb-4 px-4 border-dark">
-                <div>{{album.ref}}</div>
-            </div>
-               
-                    <!-- <div class="w-100 bg-dark">{{album.ref}}</div> -->
-                
-                <h5 class="card-title">{{ album.title }}</h5>
-                <p class="card-text"> {{ album.description }}</p>
-                <a class="btn btn-outline-secondary my-2" href="#" role="button" *ngFor="let tag of album.tags">{{ tag
-                    }}</a>
-
-
-                <div style="margin-top: 1rem;">
-                    <a class="btn btn-danger lang rounded" href="#" role="button">fr</a>
-                    <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
-                    <small>{{ album.like }}</small>
-                    <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
-                    <small>{{ album.duration }} min</small>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <a (click)="onSelect(album)" href="#" class="btn btn-outline-danger my-3">Voir l'album</a>
-
-                    <!-- <p *ngIf="status === album.id" class="fas fa-pause statusOn bg-danger"></p> -->
-                    <div class="child" *ngIf="status === album.id">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                <div class="card-body shadow rounded my-4 py-4 px-4 border border-secondary"  *ngFor="let album of albums let i = index">
+                    <p>{{i + 1}}</p>
+                <!-- <div class="card-body  rounded pb-4 px-4 border-dark">
+                    <div>{{album.ref}}</div>
+                </div> -->
+                   
+                        <!-- <div class="w-100 bg-dark">{{album.ref}}</div> -->
+                    
+                    <h5 class="card-title " style="font-weight: bold; margin-bottom: 0.8rem;">{{ album.title }}</h5>
+                    <p class="card-text" style="font-weight: normal; text-align: justify; color: #e1e1e1;"> {{ album.description }}</p>
+                    <a class="btn btn-outline-secondary my-2" href="#" role="button" *ngFor="let tag of album.tags">{{ tag
+                        }}</a>
+    
+    
+                    <div style="margin-top: 1rem;">
+                        <a class="btn btn-warning lang rounded" href="#" role="button">fr</a>
+                        <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
+                        <small>{{ album.like }}</small>
+                        <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
+                        <small>{{ album.duration }} min</small>
                     </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a (click)="onSelect(album)" href="#" class="btn btn-outline-warning my-3">Voir l'album</a>
+    
+                        <!-- <p *ngIf="status === album.id" class="fas fa-pause statusOn bg-warning"></p> -->
+                        <div class="child" *ngIf="status === album.id">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+    
                 </div>
-
             </div>
         </div><!-- .card -->
 
@@ -126,7 +127,7 @@
         .child div {
             width: 1.5rem;
             height: 95%;
-            background-color: #ff9632;
+            background-color: #ffc107;
             animation: loader-animation 0.5s infinite;
 
         }

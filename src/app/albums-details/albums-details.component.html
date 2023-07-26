@@ -1,9 +1,9 @@
 <div class="card shadow parent" *ngIf="album">
     <img class="card-img-top" src="{{imgAlbum}}" alt="Group Music">
     <div class="card-body bg-dark text-light" *ngIf="album">
-        <h5 class="card-title text-capitalize">{{album.title}}</h5>
+        <h5 class="card-title text-capitalize" style="font-weight: bold;">{{album.title}}</h5>
         <p class="card-text text-capitalize bg-dark text-light">{{album.name}}</p>
-        <a href="#" class="btn btn-danger text-bold shadow" (click)="play(album)">Play <span
+        <a href="#" class="btn btn-warning text-bold shadow" (click)="play(album)">Play <span
                 class="fas fa-play-circle"></span></a>
     </div>
 
