@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Album, List } from "../album";
 import { AlbumService } from '../album.service';
-import { ALBUMS } from "../mock-albums";
+import { fadeInAnimation } from '../animation.module';
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.css']
+  styleUrls: ['./albums.component.css'],
+  animations: [fadeInAnimation]
 })
 export class AlbumsComponent implements OnInit {
   title : string = "app-music"
   albums: Album[] | undefined = undefined;
   selectedAlbum !: Album ;
   status: string | null = null;
-  // tag: string = "Play"
   constructor(
     private albumService : AlbumService
   ) {
@@ -24,7 +23,7 @@ export class AlbumsComponent implements OnInit {
   ngOnInit() : void {
       this.albums = this.albumService
                         .order((a: Album, b: Album)=>{return a.duration - b.duration})
-                        .limit(0, 2)
+                        .limit(0, 10)
                         .getAlbums();
   }
 
@@ -34,6 +33,13 @@ export class AlbumsComponent implements OnInit {
 
   playParent(album : Album){
     this.status = album.id
+  }
+
+  search($event: Album[]) {
+    if ($event) {
+      this.albums = $event;
+    }
+    
   }
 
 

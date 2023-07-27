@@ -1,10 +1,11 @@
 <div class="card shadow parent" *ngIf="album">
-    <img class="card-img-top" src="{{imgAlbum}}" alt="Group Music">
+    <img class="card-img-top" src="{{album.url}}" alt="Group Music">
     <div class="card-body bg-dark text-light" *ngIf="album">
         <h5 class="card-title text-capitalize" style="font-weight: bold;">{{album.title}}</h5>
         <p class="card-text text-capitalize bg-dark text-light">{{album.name}}</p>
-        <a href="#" class="btn btn-warning text-bold shadow" (click)="play(album)">Play <span
-                class="fas fa-play-circle"></span></a>
+        <button href="#" class="btn btn-warning text-bold shadow" (click)="play(album)">Play <span
+                class="fas fa-play-circle"></span></button>
+        <button href="#" class="btn btn-warning text-bold shadow mx-2" (click)="ngRandomList()">Aléatoire <span class="fas fa-random"></span></button>
     </div>
 
     <div *ngIf="albumList; then ifBlock; else elseBlock "></div>

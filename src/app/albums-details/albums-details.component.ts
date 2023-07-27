@@ -5,7 +5,7 @@ import { AlbumService } from '../album.service';
 @Component({
   selector: 'app-albums-details',
   templateUrl: './albums-details.component.html',
-  styleUrls: ['./albums-details.component.css']
+  styleUrls: ['./albums-details.component.css'],
 })
 export class AlbumsDetailsComponent implements OnInit{
   @Input() album !: Album;
@@ -13,6 +13,7 @@ export class AlbumsDetailsComponent implements OnInit{
 
   albumList !: string[] | undefined ;
   imgAlbum !: string | undefined;
+  randomList !: string[] | undefined;
 
   
   constructor(
@@ -29,16 +30,21 @@ export class AlbumsDetailsComponent implements OnInit{
     this.ngChangesCover();
   }
 
+  ngRandomList() {
+    this.albumList = this.albumService.getRandomList(this.album.id)
+  }
+
   ngChangesCover() : void {
     if (this.album) {
       this.imgAlbum =this.albumService.getAlbumImage(this.album.id)?.src
     }
-    // console.log(this.albumList);
   }
 
   play(album: Album){
     this.onPlay.emit(album);
   }
+
+  
 
 
 }
