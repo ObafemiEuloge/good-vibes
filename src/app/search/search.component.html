@@ -1,7 +1,7 @@
-<div [@fadeInAnimation]>
+<div>
     <form class="d-flex my-2 my-lg-0 ms-auto" (ngSubmit)="onSubmit(formSearch)" #formSearch="ngForm">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="word" [(ngModel)]="word"
             (ngModelChange)="onChangeEmit($event)" required>
         <button class="btn btn-outline-warning my-2 mx-2 my-sm-0 m-left-4" type="submit">Search</button>
-    </form>
+    </form> 
 </div>

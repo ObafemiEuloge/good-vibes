@@ -1,6 +1,8 @@
 import { Injectable, numberAttribute } from '@angular/core';
 import { ALBUMS, ALBUM_LISTS, CoverAlbumList } from './mock-albums';
 import { Album, Img, List, SortAlbumCallback } from "./album";
+import { environment } from 'src/environment/environments';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,10 @@ export class AlbumService {
   private _albums: Album[] = ALBUMS;
   private _albumList: List[] = ALBUM_LISTS;
   private _albumImage: Img[] = CoverAlbumList;
+
+// Observable qui notifie aux abonnés la page actuelle
+  sendCurrentNumberPage = new Subject<number>();
+
 
 
   constructor() { }
@@ -40,33 +46,21 @@ export class AlbumService {
 
   getRandomList(id: string) {
     let randomNumber: number | null = null;
-    let nextRandomNumber: number | null = null;
-    let randomNumberArray: number[] | undefined;
     let listId: number[] = [];
     let newList: string[] = [];
     let list = this.getAlbumList(id)?.list
-
     if (list) {
-      for (let j = 0; j < list.length; j++) {
+      while (listId.length !== list.length) {
         randomNumber = Math.floor(Math.random() * list.length)
-        if (randomNumber === randomNumber) {
-          randomNumber = Math.floor(Math.random() * list.length)
-        } else {
-          newList.push(list[randomNumber])
+        if (listId.includes(randomNumber) === false) {
+          listId.push(randomNumber);
         }
-        
-        newList.push(list[randomNumber])
-
       }
-
-      console.log(listId)
-      console.log(randomNumber);
-
-
+      listId.forEach((idList) => {
+        if (list) {
+          newList.push(list[idList])
+        }})
     }
-
-
-
     return newList;
   }
 
@@ -96,4 +90,23 @@ export class AlbumService {
     });
   }
 
+  hideAlbum(){
+    
+  }
+
+  /**
+   * Méthode qui renvoie le nombre d'albums qu'on aura par page.
+   */
+
+  paginateNumberPage() : number {
+    return environment.numberPage;
+  }
+/**
+ * Méthode signalant à tous les composants la page actuelle
+ * @param numberPage 
+ * @returns 
+ */
+  currentPage(numberPage: number){
+    return this.sendCurrentNumberPage.next(numberPage);
+  }
 }

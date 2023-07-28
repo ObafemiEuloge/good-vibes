@@ -34,6 +34,10 @@ export class AlbumsDetailsComponent implements OnInit{
     this.albumList = this.albumService.getRandomList(this.album.id)
   }
 
+  ngHideAlbum(){
+    console.log("hello");
+  }
+
   ngChangesCover() : void {
     if (this.album) {
       this.imgAlbum =this.albumService.getAlbumImage(this.album.id)?.src

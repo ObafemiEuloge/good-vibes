@@ -3,9 +3,12 @@
     <div class="card-body bg-dark text-light" *ngIf="album">
         <h5 class="card-title text-capitalize" style="font-weight: bold;">{{album.title}}</h5>
         <p class="card-text text-capitalize bg-dark text-light">{{album.name}}</p>
-        <button href="#" class="btn btn-warning text-bold shadow" (click)="play(album)">Play <span
-                class="fas fa-play-circle"></span></button>
-        <button href="#" class="btn btn-warning text-bold shadow mx-2" (click)="ngRandomList()">Aléatoire <span class="fas fa-random"></span></button>
+        <div class="d-flex justify-content-center align-items-center flex-wrap">
+            <button href="#" class="btn btn-warning text-bold shadow mx-2" style="flex-basis: calc(50% - 2rem);" (click)="play(album)">Play <span
+                    class="fas fa-play-circle"></span></button>
+            <button href="#" class="btn btn-warning text-bold shadow mx-2" style="flex-basis: calc(50% - 1rem);" (click)="ngRandomList()">Shuffuliser <span class="fas fa-random"></span></button>
+            <button href="#" class="btn btn-danger text-bold shadow w-100 my-2" style="flex-basis: calc(100% - 2rem);" (click)="ngHideAlbum()">Hide Album <span class="fas fa-eye-slash"></span></button>
+        </div>
     </div>
 
     <div *ngIf="albumList; then ifBlock; else elseBlock "></div>

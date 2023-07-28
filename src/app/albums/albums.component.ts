@@ -23,7 +23,7 @@ export class AlbumsComponent implements OnInit {
   ngOnInit() : void {
       this.albums = this.albumService
                         .order((a: Album, b: Album)=>{return a.duration - b.duration})
-                        .limit(0, 10)
+                        .limit(0, this.albumService.count())
                         .getAlbums();
   }
 

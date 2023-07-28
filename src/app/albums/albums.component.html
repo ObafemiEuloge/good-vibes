@@ -7,25 +7,8 @@
         <!-- </div>.video -->
         <div class="col-sm-8 music">
             <h1 class="text-center" style="color: #e1e1e1;">Page principale Album Musics</h1>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link text-dark" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-dark" href="#" (click)="ngOnInit()">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-dark" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-dark" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-dark" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav><!-- .pagination -->
+            <app-paginate></app-paginate>
+            <!-- .pagination -->
     
             <div *ngIf="albums">
                 <div class="card-header">
@@ -45,14 +28,14 @@
     
     
                             <div style="margin-top: 1rem;">
-                                <button class="btn btn-warning lang rounded" href="#" role="button">fr</button>
+                                <button class="btn btn-warning lang rounded" href="#" role="button"> <span class="fas fa-globe"></span><!--fr--></button>
                                 <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />
                                 <small>{{ album.like }}</small>
                                 <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
                                 <small>{{ album.duration }} min</small>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <button (click)="onSelect(album)" href="#" class="btn btn-outline-warning my-3">Voir l'album</button>
+                                <button (click)="onSelect(album)" href="#" class="btn btn-outline-warning my-3">View Album</button>
     
                                 <!-- <p *ngIf="status === album.id" class="fas fa-pause statusOn bg-warning"></p> -->
                                 <div class="child" *ngIf="status === album.id">

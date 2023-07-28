@@ -25,7 +25,7 @@ export class SearchComponent {
 
   onChangeEmit($emit: string){
     let results = this.albumService.search($emit);
-    this.searchAlbums.emit(results)
+    this.searchAlbums.emit(results);
     
   }
 

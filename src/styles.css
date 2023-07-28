@@ -20,7 +20,7 @@
 
 body {
   height: 100vh;
-  background-color: #1a1a1a;
+  background-image: linear-gradient(to right, #111   );
 }
 
 .principal {
@@ -45,6 +45,12 @@ body {
 .glyph-icon {
   height: 0.75rem;
   display: inline-block;
+  margin: 0.25rem;
+}
+
+.logout{
+  height: 1.3rem;
+  /* display: inline-block; */
   margin: 0.25rem;
 }
 
