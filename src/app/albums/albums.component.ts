@@ -22,9 +22,9 @@ export class AlbumsComponent implements OnInit {
 
   ngOnInit() : void {
       this.albums = this.albumService
-                        .order((a: Album, b: Album)=>{return a.duration - b.duration})
-                        .limit(0, this.albumService.count())
-                        .getAlbums();
+                        // .order((a: Album, b: Album)=>{return a.duration - b.duration})
+                        .paginate(0, this.albumService.paginateNumberPage())
+                        // .getAlbums();
   }
 
   onSelect(generateAlbum: Album){
@@ -43,7 +43,11 @@ export class AlbumsComponent implements OnInit {
   }
 
 
+  onSetPaginate($event: {start: number, end: number}) {
+    this.albums = this.albumService.paginate($event.start, $event.end+1)
+  }
 
+  
 
 }
 

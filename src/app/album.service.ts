@@ -91,7 +91,12 @@ export class AlbumService {
   }
 
   hideAlbum(){
-    
+   this._albumList = []
+       
+  }
+
+  paginate(start: number, end: number) : Album[] {
+    return this.getAlbums().slice(start, end);
   }
 
   /**

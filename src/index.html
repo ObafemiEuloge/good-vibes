@@ -18,18 +18,18 @@
       background-color:rgb(245, 182, 22);
       border-radius: 50%;
       z-index: 10000;
-      transition: transform 0.3s;
+      transition: transform 0.2s;
     }
     .curseur-avant {
       position: fixed;
       width: 25px;
       height: 25px;
-      pointer-events: none;
+      /* pointer-events: none; */
       transform: translate(-50%, -50%);
       border: solid 1px rgb(245, 182, 22);
       border-radius: 50%;
       z-index: 10000;
-      transition: 0.2s ;
+      transition: 0.1s ;
     }
 
     .bloc {
@@ -46,16 +46,17 @@
       /* min-height: 100%;
       min-width: 100%; */
       /* transform: translate(-50%, -50%); */
+      opacity: 0.5;
       z-index: -1000;
     }
   </style>
 </head>
 
-<body class="bg-dark" style="font-family: Poppins; cursor: none;">
+<body class="bg-dark" style="font-family: Poppins;">
   <div class="bloc">
-    <video src="./assets/dark.mp4" autoplay="autoplay" muted="" loop=""></video>
-    <div class="curseur" id="curseur"></div>
-    <div class="curseur-avant" id="curseur-avant"></div>
+    <video src="./assets/video/Neon Rounded Purple lines Abstract Gradient Background Animation -- Free Version.mp4" autoplay="autoplay" muted="" loop=""></video>
+    <!-- <div class="curseur" id="curseur"></div>
+    <div class="curseur-avant" id="curseur-avant"></div> -->
   </div>
   <app-root></app-root>
 
@@ -69,6 +70,8 @@
       curseurBefore.style.left = e.clientX + 'px'
       curseurBefore.style.top = e.clientY + 'px'
     })
+
+   
   </script>
 </body>
 
