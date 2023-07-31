@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>AppMusic</title>
@@ -8,10 +9,67 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://kit.fontawesome.com/1c6c77a9e3.js" crossorigin="anonymous"></script>
   <style>
-    
+    .curseur {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      background-color:rgb(245, 182, 22);
+      border-radius: 50%;
+      z-index: 10000;
+      transition: transform 0.3s;
+    }
+    .curseur-avant {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      border: solid 1px rgb(245, 182, 22);
+      border-radius: 50%;
+      z-index: 10000;
+      transition: 0.2s ;
+    }
+
+    .bloc {
+      position: absolute;
+      overflow: hidden;
+      height: 100vh;
+      width: 100%;
+      z-index: -99;
+      /* background-color: aqua; */
+    }
+
+    .bloc video {
+      position: fixed;
+      /* min-height: 100%;
+      min-width: 100%; */
+      /* transform: translate(-50%, -50%); */
+      z-index: -1000;
+    }
   </style>
 </head>
-<body class="bg-dark" style = "font-family: Poppins;">
+
+<body class="bg-dark" style="font-family: Poppins; cursor: none;">
+  <div class="bloc">
+    <video src="./assets/dark.mp4" autoplay="autoplay" muted="" loop=""></video>
+    <div class="curseur" id="curseur"></div>
+    <div class="curseur-avant" id="curseur-avant"></div>
+  </div>
   <app-root></app-root>
+
+  <script>
+    let curseur = document.getElementById('curseur');
+    let curseurBefore = document.getElementById('curseur-avant');
+
+    document.addEventListener('mousemove', e => {
+      curseur.style.left = e.clientX + 'px'
+      curseur.style.top = e.clientY + 'px'
+      curseurBefore.style.left = e.clientX + 'px'
+      curseurBefore.style.top = e.clientY + 'px'
+    })
+  </script>
 </body>
+
 </html>
