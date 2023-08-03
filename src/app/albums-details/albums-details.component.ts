@@ -35,7 +35,7 @@ export class AlbumsDetailsComponent implements OnInit{
   }
 
   ngHideAlbum(){
-    console.log("hello");
+    return this.albumService.hideAlbum()
   }
 
   ngChangesCover() : void {
