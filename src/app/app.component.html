@@ -2,21 +2,24 @@
 <app-second-comp class="text-white"></app-second-comp> -->
 <div class="container principal">
     <div class="d-flex justify-content-between align-items-center mb-5">
-        <nav class="navbar navbar-expand-lg navbar-light shadow rounded-4 border border-secondary d-flex justify-content-between w-75">
+        <nav
+            class="navbar navbar-expand-lg navbar-light shadow rounded-4 border border-secondary d-flex justify-content-between w-75">
             <div class="d-flex justify-content-between w-100">
-                <a class="navbar-brand text-center fw-bolder mx-4" routerLink="" style="color: #fff;">{{ title }}</a>
+                <a class="navbar-brand text-center fw-bolder mx-4" routerLink="" style="color: #fff;"><span
+                        class="fas fa-music me-2"></span>{{ title }}</a>
                 <div class="d-flex align-items-center" style="gap: 2rem;" id="navbarNavAltMarkup">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link text-light" routerLink=''><span >
-                                <img class="logout" src="../assets/svg/si-glyph-triangle-double-home.svg" />
-                            </span> Home
+                            <a class="nav-link text-light" routerLink=''><span>
+                                    <img class="logout" src="../assets/svg/si-glyph-triangle-double-home.svg" />
+                                </span> Home
                                 <!-- <span class="sr-only">(current)</span> -->
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link text-light" href="#" routerLink="/login" routerLinkActive="active"><img class="logout" src="../assets/svg/si-glyph-triangle-double-logout.svg" />
-                                Sign in 
+                            <a class="nav-link text-light" href="#" routerLink="/login" routerLinkActive="active"><img
+                                    class="logout" src="../assets/svg/si-glyph-triangle-double-logout.svg" />
+                                Sign in
                                 <!-- <span class="sr-only">(current)</span> -->
                             </a>
                         </li>
@@ -28,12 +31,14 @@
                 </div>
             </div>
         </nav>
-       
+        <div>
+            <span class="text-white" *ngIf="count">Time : {{count}}</span>
+        </div>
+
     </div>
     <!-- La partie où sera rendue tous les enfants de ce composant -->
     <!-- <app-albums></app-albums> -->
+    <app-audio-player></app-audio-player>
     <router-outlet></router-outlet>
 
 </div>
-
-    

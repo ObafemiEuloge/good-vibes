@@ -25,31 +25,33 @@ export class AlbumsDetailsComponent implements OnInit{
 
   ngOnChanges() : void{
     if (this.album) {
-     this.albumList = this.albumService.getAlbumList(this.album.id)?.list
+    this.albumService.getAlbumList(this.album.id)?.subscribe({
+      next: (newAlbumList) => {
+        this.albumList = newAlbumList.list
+      }
+    })
     }
-    this.ngChangesCover();
+    // this.ngChangesCover();
   }
 
-  ngRandomList() {
-    this.albumList = this.albumService.getRandomList(this.album.id)
-  }
+  // ngRandomList() {
+  //   this.albumList = this.albumService.getRandomList(this.album.id)
+  // }
 
   ngHideAlbum(){
     return this.albumService.hideAlbum()
   }
 
-  ngChangesCover() : void {
-    if (this.album) {
-      this.imgAlbum =this.albumService.getAlbumImage(this.album.id)?.src
-    }
-  }
+  // ngChangesCover() : void {
+  //   if (this.album) {
+  //     this.imgAlbum =this.albumService.getAlbumImage(this.album.id)?.src
+  //   }
+  // }
 
   play(album: Album){
     this.onPlay.emit(album);
+    this.albumService.switchOn(album)
+    
   }
-
-  
-
-
 }
 

@@ -14,9 +14,11 @@ import { OpenCloseComponent } from './open-close/open-close.component';
 import { firstCompComponent } from './first-comp/first-comp.component';
 import { SecondCompComponent } from './second-comp/second-comp.component';
 import { PaginateComponent } from './paginate/paginate.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
-const albumsRoutes : Routes = [
+const albumsRoutes: Routes = [
   {
     path: '',
     redirectTo: '/albums',
@@ -27,7 +29,7 @@ const albumsRoutes : Routes = [
     path: 'albums',
     component: AlbumsComponent
   },
-  
+
   {
     path: 'login',
     component: LoginComponent
@@ -59,13 +61,15 @@ const albumsRoutes : Routes = [
     OpenCloseComponent,
     firstCompComponent,
     SecondCompComponent,
-    PaginateComponent
+    PaginateComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(albumsRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
