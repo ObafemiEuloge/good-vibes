@@ -29,12 +29,16 @@ export class PaginateComponent implements OnInit{
     this.perPage = albumsService.paginateNumberPage();
   }
   ngOnInit(): void {
-    this.total = this.albumsService.count();
-    this.numberPages = Math.ceil(this.total / this.perPage);
-
-    for (let i = 1; i <= this.numberPages; i++) {
-      this.pages.push(i)
-    }
+    this.albumsService.count().subscribe({
+      next: (total) => {
+        this.total = total
+        this.numberPages = Math.ceil(this.total / this.perPage);
+    
+        for (let i = 1; i <= this.numberPages; i++) {
+          this.pages.push(i)
+        }
+      }
+    });
   }
 
   next(){
