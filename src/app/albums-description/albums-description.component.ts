@@ -23,8 +23,11 @@ export class AlbumsDescriptionComponent implements OnInit{
   ngOnInit(): void {
     const id = this.route.snapshot.params["id"];
     this.aS.getAlbum(id)?.subscribe({
-      next: (album) => this.album = album
-    });
+      next : (alb) => {
+        this.album = alb
+      }
+    }
+    )
 
   }
 

@@ -3,7 +3,7 @@ import { Injectable, numberAttribute } from '@angular/core';
 import { Album, Img, List, SortAlbumCallback } from "./album";
 import { map, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'

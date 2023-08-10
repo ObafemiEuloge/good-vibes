@@ -14,10 +14,13 @@ import { OpenCloseComponent } from './open-close/open-close.component';
 import { firstCompComponent } from './first-comp/first-comp.component';
 import { SecondCompComponent } from './second-comp/second-comp.component';
 import { PaginateComponent } from './paginate/paginate.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { AdminModule } from './admin/admin.module';
 
 
-// const albumsRoutes : Routes = [
+// const albumsRoutes: Routes = [
 //   {
 //     path: '',
 //     redirectTo: '/albums',
@@ -28,7 +31,6 @@ import { AppRoutingModule } from './app-routing.module';
 //     path: 'albums',
 //     component: AlbumsComponent
 //   },
-  
 //   {
 //     path: 'login',
 //     component: LoginComponent
@@ -61,11 +63,13 @@ import { AppRoutingModule } from './app-routing.module';
     firstCompComponent,
     SecondCompComponent,
     PaginateComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

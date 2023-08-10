@@ -32,12 +32,8 @@ export class AlbumsComponent implements OnInit {
     // .getAlbums();
   }
 
-  onSelect(album: Album) {
-    this.albumService.getAlbum(album.id)?.subscribe({
-      next: (a) => {
-        this.selectedAlbum = a;
-      }
-    })
+  onSelect(generateAlbum: Album) {
+    this.selectedAlbum = generateAlbum;
   }
 
   playParent(album: Album) {
@@ -56,7 +52,7 @@ export class AlbumsComponent implements OnInit {
     this.albumService
       .paginate($event.start, $event.end + 1)
       .subscribe({
-        next: (alb: Album[]) => this.albums = alb
+        next : (alb : Album[])=> this.albums = alb
       })
   }
 

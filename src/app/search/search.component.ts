@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Album } from '../album';
 import { AlbumService } from '../album.service';
-import { ALBUMS } from '../mock-albums';
+import { ALBUMS } from '../mock-albumss';
 
 @Component({
   selector: 'app-search',
@@ -16,28 +16,34 @@ export class SearchComponent {
   albums: Album[] = ALBUMS;
   constructor(
     private albumService: AlbumService
-  ){}
+  ) { }
 
   onSubmit(form: NgForm) {
-    // this.albumService.search(form.value.word).subscribe({
-    //   next: (alb : Album[]) => {
-    //     if (alb.length > 0) {
-    //       this.searchAlbums.emit(alb)
-    //     }
-    //   }
-    // })
+    let results = this
+      .albumService.search(form.value.word)
+      .subscribe({
+        next: (alb: Album[]) => {
+          if (alb.length > 0) {
+            this.searchAlbums.emit(alb)
+          }
+        }
+      })
   }
 
-  onChangeEmit($emit: string){
-    this.albumService.search($emit).subscribe({
-      next: (alb : Album[]) => {
-          this.searchAlbums.emit(alb)
-      }
-    });
-    // this.word = '';
-    
+  onChangeEmit($emit: string) {
+    let results = this.albumService.search($emit)
+        .subscribe(
+          (alb: Album[]) => {
+            this.searchAlbums.emit(alb);
+          }
+        )
+
   }
 
- 
+
 
 }
+function subscribe(arg0: { next: (alb: Album[]) => void; }) {
+  throw new Error('Function not implemented.');
+}
+

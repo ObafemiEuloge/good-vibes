@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AlbumsDescriptionComponent } from './albums-description/albums-description.component';
 import { OpenCloseComponent } from './open-close/open-close.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AlbumComponent } from './admin/album/album.component';
 
 
 const albumsRoutes: Routes = [
@@ -29,6 +30,10 @@ const albumsRoutes: Routes = [
     component: AlbumsDescriptionComponent
   },
   {
+    path: 'album',
+    component: AlbumComponent
+  },
+  {
     path: 'oc',
     component: OpenCloseComponent
   },
@@ -46,6 +51,8 @@ const albumsRoutes: Routes = [
     CommonModule,
     RouterModule.forRoot(albumsRoutes),
   ],
-  exports: [RouterModule] 
+  exports : [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
