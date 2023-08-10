@@ -16,38 +16,40 @@ import { SecondCompComponent } from './second-comp/second-comp.component';
 import { PaginateComponent } from './paginate/paginate.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AdminModule } from './admin/admin.module';
 
 
-const albumsRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: '/albums',
-    pathMatch: 'full'
-  },
+// const albumsRoutes: Routes = [
+//   {
+//     path: '',
+//     redirectTo: '/albums',
+//     pathMatch: 'full'
+//   },
 
-  {
-    path: 'albums',
-    component: AlbumsComponent
-  },
+//   {
+//     path: 'albums',
+//     component: AlbumsComponent
+//   },
 
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'album/:id',
-    component: AlbumsDescriptionComponent
-  },
-  {
-    path: 'oc',
-    component: OpenCloseComponent
-  },
-  //La page NotFound reste toujours à la fin du tableau.
-  {
-    path: "**",
-    component: PageNotFoundComponent
-  },
-]
+//   {
+//     path: 'login',
+//     component: LoginComponent
+//   },
+//   {
+//     path: 'album/:id',
+//     component: AlbumsDescriptionComponent
+//   },
+//   {
+//     path: 'oc',
+//     component: OpenCloseComponent
+//   },
+//   //La page NotFound reste toujours à la fin du tableau.
+//   {
+//     path: "**",
+//     component: PageNotFoundComponent
+//   },
+// ]
 
 
 @NgModule({
@@ -67,9 +69,9 @@ const albumsRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(albumsRoutes),
     BrowserAnimationsModule,
     HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

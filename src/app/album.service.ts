@@ -29,7 +29,7 @@ export class AlbumService {
    * @returns Retourne la liste de tous les albums
    */
   getAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(this._albumListUrl).pipe(
+    return this.http.get<Album[]>(this._albumsUrl).pipe(
       //ordonner les albums par ordre de durée décroissante
       map((albums: Album[]) => {
         return albums.sort(
