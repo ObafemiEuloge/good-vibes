@@ -43,7 +43,5 @@ export class SearchComponent {
 
 
 }
-function subscribe(arg0: { next: (alb: Album[]) => void; }) {
-  throw new Error('Function not implemented.');
-}
+
 

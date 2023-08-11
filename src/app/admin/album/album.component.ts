@@ -14,10 +14,20 @@ export class AlbumComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.albumService.getAlbums().subscribe({
-      next: (albums : Album[]) => {
-        this.albums = albums
-      }
+    this.albumService
+      .paginate(0, this.albumService.paginateNumberPage())
+      .subscribe({
+        next: (alb: Album[]) => {
+          this.albums = alb
+        }
+      })
+  }
+
+  onSetPaginate ($event: {start: number, end: number}) {
+    this.albumService
+    .paginate($event.start, $event.end + 1)
+    .subscribe({
+      next : (alb : Album[])=> this.albums = alb
     })
   }
 

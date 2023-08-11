@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AlbumComponent } from './admin/album/album.component';
 
 
-const albumsRoutes: Routes = [
+let albumsRoutes: Routes = [
   {
     path: '',
     redirectTo: '/albums',
@@ -37,6 +37,8 @@ const albumsRoutes: Routes = [
     path: 'oc',
     component: OpenCloseComponent
   },
+  
+  /**=================ATTENTION DANGER======================= */
   //La page NotFound reste toujours à la fin du tableau.
   {
     path: "**",
@@ -51,8 +53,6 @@ const albumsRoutes: Routes = [
     CommonModule,
     RouterModule.forRoot(albumsRoutes),
   ],
-  exports : [
-    RouterModule
-  ]
+  exports : [RouterModule]
 })
 export class AppRoutingModule { }

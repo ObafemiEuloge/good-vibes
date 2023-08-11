@@ -1,16 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumComponent } from './album/album.component';
+import { ShareModule } from "../share/share.module";
+import { AddAlbumComponent } from './add-album/add-album.component';
+import { RouterModule, Routes } from '@angular/router';
 
 
+const routes : Routes = [
+  {
+    path: 'admin/add',
+    component: AddAlbumComponent
+  },
+]
 
 @NgModule({
   declarations: [
-    AlbumComponent
+    AlbumComponent,
   ],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
+    ShareModule,
   ],
-  exports : [AlbumComponent]
+  exports : [AlbumComponent, RouterModule]
 })
 export class AdminModule { }

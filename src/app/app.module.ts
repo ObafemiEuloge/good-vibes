@@ -18,6 +18,7 @@ import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from './admin/admin.module';
+import { ShareModule } from './share/share.module';
 
 
 // const albumsRoutes: Routes = [
@@ -62,7 +63,7 @@ import { AdminModule } from './admin/admin.module';
     OpenCloseComponent,
     firstCompComponent,
     SecondCompComponent,
-    PaginateComponent,
+    // PaginateComponent,
     AudioPlayerComponent
   ],
   imports: [
@@ -70,7 +71,9 @@ import { AdminModule } from './admin/admin.module';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AdminModule,
+    AppRoutingModule,
+    ShareModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
