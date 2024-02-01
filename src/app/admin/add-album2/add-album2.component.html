@@ -1,0 +1,83 @@
+<h1 class="text-white">Ajouter un album</h1>
+<div class="container-sm text-center"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="albumForm" class="w-75">
+        <div class="form-group my-4 text-white">
+            <!-- <label for="name">Name :</label> -->
+            <input formControlName="name" type="text" class="form-control" placeholder="Nom de l'album">
+            <div class="alert alert-danger" *ngIf="name?.invalid && name?.touched">
+                <p *ngIf="name?.errors?.['required']">
+                    Ce champs est réquis.
+                </p>
+                <p *ngIf="name?.errors?.['minlength']">
+                    Ce champs doit suivre le format d'expression régulière {{
+                    name?.errors?.['pattern']?.requiredLength}} caractères.
+                </p>
+
+            </div>
+        </div>
+        <div class="form-group my-4 text-white">
+            <input formControlName="title" type="text" class="form-control" placeholder="Titre de l'album">
+            <div class="alert alert-danger" *ngIf="title?.invalid && title?.touched">
+                <p *ngIf="title?.errors?.['required']">
+                    Ce champs est réquis.
+                </p>
+            </div>
+        </div>
+        <div class="form-group my-4 text-white">
+            <input formControlName="ref" type="text" class="form-control" placeholder="Ref">
+            <div class="alert alert-danger" *ngIf="ref?.invalid && ref?.touched">
+                <p *ngIf="ref?.errors?.['required']">
+                    Ce champs est réquis.
+                </p>
+                <p *ngIf="ref?.errors?.['pattern']">
+                    Ce champs doit suivre le format d'expression régulière <strong><em> {{
+                            ref?.errors?.['pattern']?.requiredPattern}}</em></strong>. <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">En
+                        savoir plus sur les expressions régulières.</a>
+                </p>
+            </div>
+        </div>
+        <div class="form-group my-4 text-white">
+            <!-- <label for="duration">Duration :</label> -->
+            <input formControlName="duration" type="text" class="form-control" placeholder="Durée de l'album">
+            <div class="alert alert-danger" *ngIf="duration?.invalid && duration?.touched">
+                <p *ngIf="duration?.errors?.['required']">
+                    Ce champs est réquis.
+                </p>
+                <p *ngIf="duration?.errors?.['pattern']">
+                    Ce champs doit suivre le format d'expression régulière <strong><em> {{
+                            duration?.errors?.['pattern']?.requiredPattern}}</em></strong>. <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions">En
+                        savoir plus sur les expressions régulières.</a>
+                </p>
+                <!-- <p *ngIf="duration?.errors?.['max']">
+                    La valeur saisie ne doit pas être supérieure à {{ duration?.errors.['max']?.max }}
+                </p> -->
+            </div>
+        </div>
+
+        <div class="form-group my-4 text-white">
+            <textarea formControlName="description" type="text" class="form-control"
+                placeholder="Description"></textarea>
+            <div class="alert alert-danger" *ngIf="duration?.invalid && duration?.touched">
+                <p *ngIf="description?.errors?.['required']">
+                    Ce champs est réquis.
+                </p>
+            </div>
+        </div>
+
+        
+        <div formArrayName="tags" class="text-white">
+            <h3>Etiquettes de l'album</h3>
+            <button (click)="addTag()" class=" btn btn-success rounded-pill"> + Ajouter une étiquette</button>
+            <div class="form-group mt-2" *ngFor="let tag of tags.controls, let i = index">
+                <label for="tag-{{i}}">Tag: </label>
+                <input [formControlName]="i" class="form-control rounded-pill py-1 w-25 " id="tag-{{i}}" type="text">
+                <div class="alert alert-danger" *ngIf="tags.controls[i]?.invalid && tags.controls[i]?.touched"> Le champs est requis</div>
+            </div>
+        </div>
+        <button [disabled]="albumForm.invalid" type="submit" class="btn btn-primary w-25 text-centerm my-4 d-flex justify-content-center">Add</button>
+    </form>
+</div>

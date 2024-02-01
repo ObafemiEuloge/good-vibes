@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Album } from 'src/app/album';
 import { AlbumService } from '../../album.service';
 
@@ -8,9 +9,11 @@ import { AlbumService } from '../../album.service';
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
-  albums !: Album[]
+  albums !: Album[];
+  message !: string | undefined;
   constructor(
-    private albumService : AlbumService
+    private albumService : AlbumService,
+    private route : ActivatedRoute
   ){}
 
   ngOnInit(): void {
@@ -20,7 +23,11 @@ export class AlbumComponent implements OnInit {
         next: (alb: Album[]) => {
           this.albums = alb
         }
-      })
+      });
+    
+    this.route.queryParams.subscribe(params => {
+     this.message = params['message']
+    })
   }
 
   onSetPaginate ($event: {start: number, end: number}) {

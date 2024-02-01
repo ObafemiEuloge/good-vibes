@@ -7,6 +7,8 @@ import { AlbumsDescriptionComponent } from './albums-description/albums-descript
 import { OpenCloseComponent } from './open-close/open-close.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AlbumComponent } from './admin/album/album.component';
+import { FormTemplateComponent } from './form-template/form-template.component';
+import { FormReactifComponent } from './form-reactif/form-reactif.component';
 
 
 let albumsRoutes: Routes = [
@@ -37,6 +39,19 @@ let albumsRoutes: Routes = [
     path: 'oc',
     component: OpenCloseComponent
   },
+  {
+    path: 'template',
+    component: FormTemplateComponent
+  },
+  {
+    path: 'reactif',
+    component: FormReactifComponent
+  },
+  {
+    path: 'admin',
+    component: AlbumComponent
+  },
+
   
   /**=================ATTENTION DANGER======================= */
   //La page NotFound reste toujours à la fin du tableau.

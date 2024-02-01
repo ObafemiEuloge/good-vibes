@@ -30,6 +30,8 @@ export class AlbumsComponent implements OnInit {
       })
     // .order((a: Album, b: Album)=>{return a.duration - b.duration})
     // .getAlbums();
+
+      // this.albumService.albumFetch();
   }
 
   onSelect(generateAlbum: Album) {

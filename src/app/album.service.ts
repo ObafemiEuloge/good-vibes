@@ -5,11 +5,13 @@ import { map, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import * as _ from 'lodash';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumService {
+  
   subjectAlbum = new Subject<Album>();
   private _albumsUrl: string = environment.albumUrl;
   private _albumListUrl: string = environment.albumListUrl;

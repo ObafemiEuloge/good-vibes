@@ -1,7 +1,10 @@
 <app-paginate (setPaginate)="onSetPaginate($event)"></app-paginate>
-
+<p *ngIf="message" class="alert alert-success position-relative d-flex justify-content-between">
+    {{message}}
+    <button (click)="message = undefined" class="btn btn-close"></button>
+</p>
 <p>
-    <button routerLink="/admin/add" class="btn btn-dark mt-3">Ajouter un album</button>
+    <button routerLink="/admin/add2" class="btn btn-dark mt-3">Ajouter un album</button>
 </p>
 
 <table class="table table-dark" [@fadeInAnimation]>

@@ -1,0 +1,43 @@
+<div class="container-sm" style="display: flex; flex-direction: column; justify-content: center; align-items: center;" [hidden]="submitted">
+    <h1 class="text-white text-center">Ajouter un album (Template Form)</h1>
+    <form action="" class="text-white w-75" #musicForm="ngForm" (ngSubmit)="onSubmit(musicForm)">
+        <div class="form-group my-4 text-white">
+            <label for="name">Name :</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="musicModel.name" #name="ngModel" required>
+            <div *ngIf="name.touched && (name.invalid || name.pristine) " class="alert alert-danger ">Le nom de l'album est requis !</div>
+        </div>
+        <div class="form-group my-4 text-white">
+            <label for="title">Title : </label>
+            <input type="text" class="form-control" id="auteur" name="auteur" #auteur="ngModel" [(ngModel)]="musicModel.auteur"  required >
+            <div *ngIf="auteur.touched && (auteur.invalid || auteur.pristine) " class="alert alert-danger ">L'auteur est requis !</div>
+        </div>
+        <div class="form-group my-4 text-white">
+            <label for="style" class="text-left">Style de musique : </label>
+            <select class="form-control" id="style" name="style" [(ngModel)]="musicModel.style" #style="ngModel">
+                <option value="unselected" disabled>Choisir un style de musique...</option>
+                <option *ngFor="let genre of genres">{{genre}}</option>
+            </select>
+            <div *ngIf="style.touched && (style.invalid || style.pristine) " class="alert alert-danger ">L'auteur est requis !</div>
+        </div>
+        <button type="submit" class="btn btn-primary w-25 text-center my-4 " [disabled]="musicForm.invalid">Add</button>
+    </form>
+
+</div>
+
+<div class="container text-white" [hidden]="!submitted">
+    <h2>Vous avez soumis l'album suivant : </h2>
+    <div class="row">
+        <div class="col-md-3">Nom de l'album : </div>
+        <div class="col-md-9"><strong>{{ musicModel.name}}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">Auteur : </div>
+        <div class="col-md-9"><strong>{{ musicModel.auteur}}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">Style : </div>
+        <div class="col-md-9"><strong>{{ musicModel.style}}</strong></div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="submitted = false">Editer</button>
+</div>

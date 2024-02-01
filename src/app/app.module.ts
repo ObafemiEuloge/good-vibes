@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from './app.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumsDetailsComponent } from './albums-details/albums-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { Routes, RouterModule } from "@angular/router";
 import { AlbumsDescriptionComponent } from './albums-description/albums-description.component';
@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { ShareModule } from './share/share.module';
+import { FormTemplateComponent } from './form-template/form-template.component';
+import { FormReactifComponent } from './form-reactif/form-reactif.component';
 
 
 // const albumsRoutes: Routes = [
@@ -64,7 +66,9 @@ import { ShareModule } from './share/share.module';
     firstCompComponent,
     SecondCompComponent,
     // PaginateComponent,
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    FormTemplateComponent,
+    FormReactifComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +76,7 @@ import { ShareModule } from './share/share.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AdminModule,
+    // ReactiveFormsModule,
     AppRoutingModule,
     ShareModule,
   ],
